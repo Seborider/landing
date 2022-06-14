@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../forecast.service';
 
+
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
   styleUrls: ['./forecast.component.css']
 })
 export class ForecastComponent implements OnInit {
+  forecastData: any[] = []
 
   constructor(forecastService: ForecastService) { 
-    forecastService.getForecast().subscribe(weatherRespone => {console.log(weatherRespone)})
+    forecastService.getForecast().subscribe(forecastData => {
+      this.forecastData = forecastData
+    })
       
     
   }

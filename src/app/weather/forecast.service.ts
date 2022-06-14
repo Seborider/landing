@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, switchMap, pluck, mergeMap, of, filter, toArray, tap } from 'rxjs';
+import { map, Observable, switchMap, pluck, mergeMap, of, filter, toArray, tap, share } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http'
 
 interface OpenWeatherResponse {
@@ -39,7 +39,8 @@ export class ForecastService {
       })),
       tap(value => console.log(value)
       ),
-      toArray()
+      toArray(),
+      share()
   )}
 
   getCurrentLocation() {

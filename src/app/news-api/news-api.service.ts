@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import { Subject, tap, map, switchMap, Observable } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
 
+interface NewsApiRespone {
+  totalResults: number;
+  articles: {
+    title: string;
+    url: string;
+  }[]
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +33,7 @@ export class NewsApiService {
         .set('set', page)
       }),
       switchMap((params) => {
-        return this.http.get(this.url, { params })
+        return this.http.get<NewsApiRespone>(this.url, { params })
       })
     )
     this.numberOfPages = new Observable()

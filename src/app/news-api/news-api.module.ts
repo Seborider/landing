@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeArticleListComponent } from './de-article-list/de-article-list.component';
+import { TrimOutletNamePipe } from './trim-outlet-name.pipe';
 
 
 
 @NgModule({
   declarations: [
-    DeArticleListComponent
+    DeArticleListComponent,
+    TrimOutletNamePipe
   ],
   imports: [
     CommonModule

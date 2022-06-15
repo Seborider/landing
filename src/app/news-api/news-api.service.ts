@@ -7,7 +7,7 @@ interface NewsApiRespone {
   articles: Article []
 }
 
-interface Article {
+export interface Article {
   title: string;
   url: string;
 }

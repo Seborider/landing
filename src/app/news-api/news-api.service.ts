@@ -10,6 +10,9 @@ interface NewsApiRespone {
 export interface Article {
   title: string;
   url: string;
+  source: {
+    name: string
+  }
 }
 @Injectable({
   providedIn: 'root'

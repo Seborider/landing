@@ -10,6 +10,9 @@ import { DeArticleListComponent } from './de-article-list/de-article-list.compon
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    DeArticleListComponent
   ]
 })
 export class NewsApiModule { }

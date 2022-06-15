@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsApiService, Article } from '../news-api.service';
 
 @Component({
   selector: 'app-de-article-list',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./de-article-list.component.css']
 })
 export class DeArticleListComponent implements OnInit {
+  articles!: Article[] 
 
-  constructor() { }
+
+  constructor(private newsApiService: NewsApiService) { 
+    this.newsApiService.pagesOutput.subscribe((articles) => {
+      this.articles = articles
+    })
+  }
 
   ngOnInit(): void {
   }
+
+
 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, tap, map, switchMap, Observable } from 'rxjs';
+import { HttpParams, HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,20 @@ export class NewsApiService {
   pagesOutput: Observable<any>
   numberOfPages: Observable<number>
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.pagesInput = new Subject()
-    this.pagesOutput = this.pagesInput.pipe()
+    this.pagesOutput = this.pagesInput.pipe(
+      map((page) => {
+        return new HttpParams()
+        .set('apiKey', this.apiKey)
+        .set('country', this.country)
+        .set('pageSize', this.pageSize)
+        .set('set', page)
+      }),
+      switchMap((params) => {
+        return this.http.get(this.url, { params })
+      })
+    )
     this.numberOfPages = new Observable()
   }
 }

@@ -6,3 +6,8 @@
     width: 300px;
     z-index: 20;
 }
+
+.space {
+    display: flex;
+    justify-content: space-between;
+}

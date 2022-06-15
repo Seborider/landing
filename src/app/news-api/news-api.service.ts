@@ -4,10 +4,12 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 
 interface NewsApiRespone {
   totalResults: number;
-  articles: {
-    title: string;
-    url: string;
-  }[]
+  articles: Article []
+}
+
+interface Article {
+  title: string;
+  url: string;
 }
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class NewsApiService {
   private country = 'de'
 
   private pagesInput: Subject<number>
-  pagesOutput: Observable<any>
+  pagesOutput: Observable<Article[]>
   numberOfPages: Subject<number>
 
   constructor(private http: HttpClient) {
